@@ -1,0 +1,61 @@
+libname tsa '/folders/myfolders/coursefiles/EPG194';
+
+data TSA.IMPORTEDCLAIMS2;
+	infile '/folders/myfolders/coursefiles/EPG194/TSAClaims2002_2017.csv' delimiter=',' MISSOVER DSD lrecl=32767 firstobs=2;
+	informat    Claim_Number $13.
+		         Date_Received best32.
+			 Incident_Date best32.
+			 Airport_Code $3.
+			 Airport_Name $48.
+ 			 Claim_Type $39.
+ 			 Claim_Site $15.
+	 		 Item_Category $834.
+ 			 Close_Amount best32.
+			 Disposition $23.
+			 StateName $17.
+ 			 State $2.
+			 County $20.
+ 		         City $33.;
+	format 	Claim_Number $13.
+	 		Date_Received best12.
+	 		Incident_Date best12.
+	 		Airport_Code $3.
+	 		Airport_Name $48.
+	 		Claim_Type $39.
+	 		Claim_Site $15.
+	 		Item_Category $834.
+	 		Close_Amount best12.
+	 		Disposition $23.
+	 		StateName $17.
+	 		State $2.
+	 		County $20.
+	 		City $33.;
+	input 
+            Claim_Number  $
+            Date_Received 
+            Incident_Date 
+	    Airport_Code  $
+            Airport_Name  $
+            Claim_Type  $
+            Claim_Site  $
+            Item_Category  $
+            Close_Amount 
+            Disposition  $
+            StateName  $
+            State  $
+            County  $
+            City  $;
+run;
+
+
+
+
+Here is the data to verify:
+
+Total imported rows: 220855.
+
+Total imported columns : 14
+
+proc univariate data=tsa.importedclaims2;
+run;
+
